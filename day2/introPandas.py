@@ -38,9 +38,14 @@ df.columns = ["chromosome","database","type","start","end","score", "strand", "f
 # print df["start"][9:15]
 
 # print df.shape #Gives the size of the data frame
-df2 = df["start"]
+# df2 = df["start"]
 # print df2.shape
 
 # df2.to_csv("startcolumn.txt")
 
-df2.to_csv("startcolumn.txt", sep='\t', index=False)
+# df2.to_csv("startcolumn.txt", sep='\t', index=False)
+
+roi = df["start"]< 10 
+# print df[roi]
+# print df[roi].shape
+# print df[~roi].shape
