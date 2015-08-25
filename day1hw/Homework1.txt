@@ -16,7 +16,7 @@ fastqc SRR072893.fastq
 hisat -x ../genomes/BDGP6 -U SRR072893.fastq -p 4 -S > BDGP6.sam
 
 # The output file was BDGP6.sam and the alignment report on the screen presented the following
-#Alignment results of SRR072893.fastq to BDGP6  
+# Alignment results of SRR072893.fastq to BDGP6  
 
 # 21892898 reads; of these:
 #   21892898 (100.00%) were unpaired; of these:
@@ -28,10 +28,13 @@ hisat -x ../genomes/BDGP6 -U SRR072893.fastq -p 4 -S > BDGP6.sam
 # 4) Convertion of .sam to .bam, sort, and index using SAMtools
 
 samtools view -b BDGP6.sam > BDGP6.bam
+# Output was BDGP6.bam
 
 samtools sort BDGP6.bam BDGP6.sorted 
+# Output was BDGP6.sorted.bam
 
 samtools index BDGP6.sorted.bam
+# Output was BDGP6.sorted.bam.bai
 
 # 5) Quantitate sorted .bam file using StringTie
 
@@ -41,55 +44,56 @@ stringtie BDGP6.sorted.bam -p 4 -e -G ../genomes/BDGP6.Ensembl.81.gtf -o quantit
 
 # 6) qbb2015/assignments/day1-homework/doAnalysis.sh Bash script
 
-OUTPUT SCREEN:
+# The corrected script is in day1hw/ directory
+# OUTPUT SCREEN:
 
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072893.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072893.fastq.gz -S SRR072893.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072894.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072894.fastq.gz -S SRR072894.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072895.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072895.fastq.gz -S SRR072895.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072896.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072896.fastq.gz -S SRR072896.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072897.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072897.fastq.gz -S SRR072897.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072898.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072898.fastq.gz -S SRR072898.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072899.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072899.fastq.gz -S SRR072899.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072900.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072900.fastq.gz -S SRR072900.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072901.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072901.fastq.gz -S SRR072901.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072902.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072902.fastq.gz -S SRR072902.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072903.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072903.fastq.gz -S SRR072903.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072904.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072904.fastq.gz -S SRR072904.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072905.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072905.fastq.gz -S SRR072905.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072906.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072906.fastq.gz -S SRR072906.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072907.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072907.fastq.gz -S SRR072907.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072908.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072908.fastq.gz -S SRR072908.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072909.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072909.fastq.gz -S SRR072909.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072910.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072910.fastq.gz -S SRR072910.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072911.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072911.fastq.gz -S SRR072911.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072912.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072912.fastq.gz -S SRR072912.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072913.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072913.fastq.gz -S SRR072913.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072914.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072914.fastq.gz -S SRR072914.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072915.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072915.fastq.gz -S SRR072915.sam
-fastqc /Users/cmdb/qbb2015/rawdata/SRR072916.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
-hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072916.fastq.gz -S SRR072916.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072893.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072893.fastq.gz -S SRR072893.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072894.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072894.fastq.gz -S SRR072894.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072895.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072895.fastq.gz -S SRR072895.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072896.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072896.fastq.gz -S SRR072896.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072897.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072897.fastq.gz -S SRR072897.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072898.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072898.fastq.gz -S SRR072898.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072899.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072899.fastq.gz -S SRR072899.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072900.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072900.fastq.gz -S SRR072900.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072901.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072901.fastq.gz -S SRR072901.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072902.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072902.fastq.gz -S SRR072902.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072903.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072903.fastq.gz -S SRR072903.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072904.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072904.fastq.gz -S SRR072904.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072905.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072905.fastq.gz -S SRR072905.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072906.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072906.fastq.gz -S SRR072906.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072907.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072907.fastq.gz -S SRR072907.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072908.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072908.fastq.gz -S SRR072908.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072909.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072909.fastq.gz -S SRR072909.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072910.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072910.fastq.gz -S SRR072910.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072911.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072911.fastq.gz -S SRR072911.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072912.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072912.fastq.gz -S SRR072912.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072913.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072913.fastq.gz -S SRR072913.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072914.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072914.fastq.gz -S SRR072914.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072915.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072915.fastq.gz -S SRR072915.sam
+# fastqc /Users/cmdb/qbb2015/rawdata/SRR072916.fastq.gz -o /Users/cmdb/qbb2015/assignments/day1-homework
+# hisat -p 4 -x /Users/cmdb/qbb2015/genomes/BDGP6 -U /Users/cmdb/qbb2015/rawdata/SRR072916.fastq.gz -S SRR072916.sam
 
 
