@@ -10,7 +10,7 @@ for line in f:
         pass
     else:
         fields = line.split()
-        for "2L" in fields[2] and int(fields[3]) in range(10000,20001):
+        if "2L" in fields[2] and int(fields[3])<20001 and int(fields[3])>= 10000:
             count += 1
 
 print count
