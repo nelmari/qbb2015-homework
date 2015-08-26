@@ -7,8 +7,6 @@ filename = "/Users/cmdb/qbb2015/stringtie/SRR072893/t_data.ctab"
 
 file = open(filename)
 count =0
-flag = False
-
 
 for line in file:
     if "t_id" in line:
@@ -16,25 +14,26 @@ for line in file:
     else:
         fields = line.split()
         FPKM = float(fields[11])
-        if FPKM == 0:
-            pass
-            
-        elif flag == False:
-            df2= pd.DataFrame(fields)
-            flag = True
-            result = df1.append(df2)
-            
+        if FPKM == 0.0:
+            pass    
         else:
-            result = result.append(pd.DataFrame(fields))
+            df_temp = pd.DataFrame(fields)
+            df1 = df1.append(df_temp)
 
-print result.shape            
+
+ 
+n= len(df1.index)
+print n
+n1= int(1/3*n)
+n2= int (2/3*n)
+
+bottom= df1["FPKM"][0:n1]
+middle = df1["FPKM"][n1:n2]
+top= df1["FPKM"][n2:]
 
 plt.figure();
-plt.title("Boxplot for FPKM")
-           
-plt.plot(result,"kind"==box)
-
-plt.savefig("Boxplot.png")
-
-
-###Make a boxplot of the top 1/3rd, middle 1/3rd, and bottom third FPKM values in SRR072893 
+plt.title("Boxplot for FPKM in SRR072893")           
+plt.boxplot([top, middle, bottom])
+plt.ylabel("FPKM")
+plt.xlabel("SRR072893")
+plt.savefig("answer4.png")

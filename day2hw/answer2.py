@@ -15,7 +15,7 @@ for line in df["attributes"]:
     if "Sxl" not in line:
         pass
     else:
-        roi = df["attributes"].str.contains("Sxl")
+        roi = df["type"].str.contains("transcript")
         count+=1
 
 plt.figure()
