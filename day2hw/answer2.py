@@ -11,19 +11,22 @@ df.columns = ["chromosome","database","type","start","end","score", "strand", "f
 
 count =0
 
-roi= df["attributes"].str.contains("Sxl")
-roi2 = df["type"].str.contains("transcript")
+for line in df["attributes"]:
+    if "Sxl" not in line:
+        pass
+    else:
+        roi = df["attributes"].str.contains("Sxl")
+        count+=1
 
-print df[roi].shape
+plt.figure()
 
-#for count in df[]: 
- #   if roi[count] == roi2[count]:
-  #      print roi[count]
-   # count += 1;
-    #else:
-     #   print False
-     #   count +=1
- 
-        
+plt.title("Sxl transcript")            
+plt.plot(df[roi]["start"])
+plt.ylabel("Start position")
+plt.xlabel("Gene") 
+plt.savefig("answer2.png")
+            
+
+
 print count
     

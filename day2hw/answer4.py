@@ -8,33 +8,33 @@ filename = "/Users/cmdb/qbb2015/stringtie/SRR072893/t_data.ctab"
 file = open(filename)
 count =0
 flag = False
-x=0
 
-num_lines = sum(1 for line in file)
 
 for line in file:
     if "t_id" in line:
         df1 = pd.DataFrame(columns=(line.split()))
-        x +=1
     else:
         fields = line.split()
         FPKM = float(fields[11])
         if FPKM == 0:
-            x+=1
+            pass
+            
         elif flag == False:
-            df2= pd.DataFrame(line.split())
+            df2= pd.DataFrame(fields)
             flag = True
-            result =df1.append(df2)
-            print result
-            x += 1
-        else: 
-            if x < = num_lines
-            df3 = pd.DataFrame(line.split())
-            x+=1
+            result = df1.append(df2)
             
-        #TOTAL = result.append(df3)
-            
+        else:
+            result = result.append(pd.DataFrame(fields))
 
-#print TOTAL.shape
+print result.shape            
+
+plt.figure();
+plt.title("Boxplot for FPKM")
+           
+plt.plot(result,"kind"==box)
+
+plt.savefig("Boxplot.png")
+
 
 ###Make a boxplot of the top 1/3rd, middle 1/3rd, and bottom third FPKM values in SRR072893 
