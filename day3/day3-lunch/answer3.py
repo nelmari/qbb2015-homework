@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import gaussian_kde
-
+from scipy import stats
 
 table = pd.read_table("~/qbb2015/stringtie/SRR072893/t_data.ctab")
 
@@ -16,14 +16,30 @@ for value in table["FPKM"]:
     else:
         pass
 
-#plt.figure()
-#density = gaussian_kde(FPKM)
+#gaussian_kde object
+density = gaussian_kde(FPKM)
+print type(density)
 
+#numpy darray
+denP = density.evaluate(FPKM)
+print type (denP)
+
+
+plt.figure()
+
+# plot histgram of sample
 #plt.hist(FPKM)
-#plt.hist(density)
-#plt.title("FPKM in SRR0272893")
-#plt.xlabel("log of FPKM values")
+
+# plot data generating density
+#plt.plot(FPKM, stats.norm.pdf(FPKM), color="r", label='DGP normal')
+
+# plot estimated density
+plt.plot(FPKM, denP, label='kde', color="c")
+plt.title('Kernel Density Estimation')
+plt.legend()
+
+plt.xlabel("log of FPKM values")
 #plt.ylabel("Abundance in SRR0272893")
-#plt.savefig("density.png")
+plt.savefig("density.png")
    
 print "0"
