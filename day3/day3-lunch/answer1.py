@@ -4,6 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 metadata = pd.read_csv("~/qbb2015/rawdata/samples.csv")
+
 Sxl_f = []
 Sxl_m = []
 Sxl_r = []
@@ -24,13 +25,13 @@ for columns in replicates["sample"]:
     df_r = pd.read_table ("~/qbb2015/stringtie/"+columns+"/t_data.ctab")
     roi_r = df_r["t_name"].str.contains("FBtr0331261")
     Sxl_r.append(df_r[roi_r]["FPKM"].values)
-      
+
 plt. figure
 plt.plot(Sxl_f, label ="Female", color = "m")
-plt.plot(Sxl_m, label= "Male", color = "c")
-plt.plot(Sxl_r, label= "Replicates", color = "g")
+plt.plot(Sxl_m, label= "Male", color = "r")
+plt.plot(Sxl_r, 'o', label ="Replicates", color = "c")
 plt.legend()
-plt.axis([2,8,0,200])
+plt.axis([0,8,0,200])
 plt.xlabel("Developmental Stage")
 plt.ylabel("FPKM values")
 plt.savefig("time_course_fm.png")
