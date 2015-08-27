@@ -28,7 +28,7 @@ plt.figure()
 #plt.hist(FPKM, bins=20, color = "w")
 
 # plot estimated density
-plt.plot(FPKM, denP, label='kde', color= "c")
+plt.plot(FPKM, denP, 'o',label='kde', color= "c")
 plt.title('Kernel Density Estimation')
 plt.legend()
 plt.xlabel("log of FPKM values")
