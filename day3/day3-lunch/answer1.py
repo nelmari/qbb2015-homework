@@ -29,9 +29,10 @@ for columns in replicates["sample"]:
 plt. figure
 plt.plot(Sxl_f, label ="Female", color = "m")
 plt.plot(Sxl_m, label= "Male", color = "r")
-plt.plot(Sxl_r, 'o', label ="Replicates", color = "c")
+plt.plot([4,5,6,7,4,5,6,7],Sxl_r, 'o', label ="Replicates", color = "c")
 plt.legend()
 plt.axis([0,8,0,200])
 plt.xlabel("Developmental Stage")
+
 plt.ylabel("FPKM values")
-plt.savefig("time_course_fm.png")
+plt.savefig("time_course_fm2.png")
