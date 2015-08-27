@@ -18,7 +18,7 @@ for value in table["FPKM"]:
 print len(FPKM)
 
 plt.figure()
-plt.hist(FPKM)
+plt.hist(FPKM, bins=20)
 plt.title("FPKM in SRR0272893")
 plt.xlabel("log of FPKM values")
 plt.ylabel("Abundance in SRR0272893")

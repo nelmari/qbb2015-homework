@@ -18,28 +18,22 @@ for value in table["FPKM"]:
 
 #gaussian_kde object
 density = gaussian_kde(FPKM)
-print type(density)
+print density.d
 
 #numpy darray
 denP = density.evaluate(FPKM)
-print type (denP)
-
 
 plt.figure()
-
 # plot histgram of sample
-#plt.hist(FPKM)
-
-# plot data generating density
-#plt.plot(FPKM, stats.norm.pdf(FPKM), color="r", label='DGP normal')
+#plt.hist(FPKM, bins=20, color = "w")
 
 # plot estimated density
-plt.plot(FPKM, denP, label='kde', color="c")
+plt.plot(FPKM, denP, label='kde', color= "c")
 plt.title('Kernel Density Estimation')
 plt.legend()
-
 plt.xlabel("log of FPKM values")
 #plt.ylabel("Abundance in SRR0272893")
+
 plt.savefig("density.png")
    
 print "0"
