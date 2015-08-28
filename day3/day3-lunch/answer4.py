@@ -6,21 +6,30 @@ import numpy as np
 
 
 table = pd.read_table("~/qbb2015/stringtie/SRR072893/t_data.ctab")
-
-FPKM =[] 
+table2 = pd.read_table("~/qbb2015/stringtie/SRR072895/t_data.ctab")
 
 #FPKM builds on the assumption that the number of reads that are generated from an isoform is proportional to the isoform abundance as well as the isoform length.
-print table.columns.values
-for value in table["FPKM"]:
-    if np.log2(value) > 0.0 :
-        FPKM.append(np.log(value))
-    else:
-        pass
 
-print FPKM
+FP93 = table["FPKM"] > 0
+FP95 = table2["FPKM"] > 0
 
-#M = R - G
-#A = 0.5*(R + G) ##Average intensity =FPKM???
+simplified = FP93 & FP95 
+
+FPKM_893 = table[simplified]["FPKM"] # R
+FPKM_895 = table2[simplified]["FPKM"] # G
+
+R = np.log2(FPKM_893)
+G = np.log2(FPKM_895)
+         
+M = R - G
+A = 0.5*(R + G) 
+
+plt.figure()
+plt.plot(A, M, 'o', label ="MA PLOT", color = "c")
+plt.legend()
+plt.title("MA Plot SRR072893 and SRR072895")
+
+plt.savefig("MA_plot.png")
 
 
 
