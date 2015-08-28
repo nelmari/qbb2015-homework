@@ -8,8 +8,28 @@ from __future__ import division
 
 import sys
 import numpy as np
+import copy
 
-def arrays_from_len_file (file_name):
+class ChromosomeLoc (object):
+    def __init__ (self, dicts = None, fname= None):
+        
+    def intersect (self, other):
+        rval = {}
+        for chr in self.arrays:
+            rval [chrm]=self.arrays[chrm] & other [chrm]
+    def complement(self):
+        rval[chrm] = ~
+    def copy(self):
+        return ChromosomeLoc(dicts =copy.deepcopy(self.arrays))
+
+
+
+arr = ChromosomeLoc(fname=sys.argv[1])
+ctcf = arr.copy()
+beaf = 
+
+
+"""def arrays_from_len_file (file_name):
     
     arrays ={}
     
@@ -83,7 +103,7 @@ for line in open(sys.argv[3]):
     
     
 print "Total: %d, Any overlap: %d, All overlap %d, Half overlapping %d " %(total, any_overlap, all_overlap, half_overlap)
-
+"""
 
 
 

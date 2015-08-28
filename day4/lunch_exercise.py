@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 
+print "\n VENN DIAGRAM "
+
 import numpy as np
 from matplotlib_venn import venn2 
 from matplotlib_venn import venn3
 import matplotlib.pyplot as plt
 import sys
 
-print "\n VENN DIAGRAM "
-
+""" Define the functions """
 def arrays_from_len_file (file_name):
     arrays ={}
     for line in open (file_name):  # We opened the file to read line by line
@@ -16,7 +17,6 @@ def arrays_from_len_file (file_name):
         size = int( fields[1] ) 
         arrays[name] = np.zeros( size, dtype = bool )
     return arrays
- 
         
 def set_bits_from_file (arrays, file_name2):
     for line in open(file_name2):
@@ -44,10 +44,11 @@ def ALLOVER (file_name, array, array2):
         overlap_2 += sl2.any()
         if sl.any() == sl2.any():
             both_overlap += sl.any()
+            
     return total, both_overlap, overlap_1, overlap_2
 
 """Implementation of functions and calculation of overlapping"""
-# Making the arrays 0
+# Making the arrays and initialice with 0
 ARRAY_P1 = arrays_from_len_file (sys.argv[1]) # Array of protein 1 
 ARRAY_P2 = arrays_from_len_file (sys.argv[1]) # Array of protein 2 
 ARRAY_P3 = arrays_from_len_file (sys.argv[1]) # Array of protein 3
@@ -68,21 +69,19 @@ print " BEAF " , B_all, BandC,  BEAF_t, BandS
 print " SuHW " , S_all, SandC,  SandB,  SuHW_t
 print "\n"
 
-SBC = (C_all+B_all+S_all)/3
-SB = (BandS+SandB)/2 - SBC
-BC = (BandC+CandB)/2 - SBC
-SC = (SandC+CandS)/2 - SBC
+SBC = (C_all + B_all + S_all)/3
 
-S = SuHW_t - (SB + SC)
-B = BEAF_t - (SB + BC)
-C = CTCF_t - (SC + BC) 
+SB = (BandS + SandB)/2 - SBC
+BC = (BandC + CandB)/2 - SBC
+SC = (SandC + CandS)/2 - SBC
+
+S = SuHW_t - (SB + SC + SBC) 
+B = BEAF_t - (SB + BC + SBC)
+C = CTCF_t - (SC + BC + SBC) 
+
 """ Plotting the results """ 
-
 plt.figure()
-
+plt.title("Venn Diagram- version1")
 My_venn = venn3(subsets = (S, B, SB, C,SC, BC, SBC ), set_labels = ("SuHW","BEAF", "CTCF"))   
 
-plt.show()
 plt.savefig("Venn.png")
-
- 
