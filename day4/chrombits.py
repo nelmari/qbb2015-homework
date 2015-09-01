@@ -16,7 +16,7 @@ class ChromosomeLocationBitArrays( object ):
             for line in open( fname ):
                 fields = line.split()
                 name = fields[0]
-                size = int( fields[1] )
+                size = int(fields[1])
                 arrays[name] = numpy.zeros( size, dtype=bool )
                 t_list =[]
         self.arrays = arrays
@@ -49,9 +49,15 @@ class ChromosomeLocationBitArrays( object ):
         rval = {}
         for chrom in self.arrays:
             rval[chrom] = self.arrays[chrom] | other.arrays[chrom]
-        biglist = []
-        return ChromosomeLocationBitArrays( dicts=rval , touple = biglist)
-        
+        b_list = []
+        for value in self.t_list:
+            b_list.append(value)
+        for val in other.t_list:
+            if val not in b_list:
+                b_list.append(val) 
+        print len(self.t_list),len(other.t_list), len (b_list)
+        return ChromosomeLocationBitArrays( dicts=rval, touple = b_list )
+    
     def complement( self ):
         rval = {}
         for chrom in self.arrays:
